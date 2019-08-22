@@ -130,6 +130,12 @@ body {
     padding-right: 3px;
     white-space: nowrap;
 }
+.milestone-label.milestone-wip {
+    border-bottom-color: #C16F1F;
+}
+.milestone-label.milestone-future {
+    border-bottom-color: #D15992;
+}
 .milestone-label::before,
 .milestone-label::after {
     content: '';
@@ -141,6 +147,14 @@ body {
     background: #31a64f;
     border-radius: 50%;
 }
+.milestone-label.milestone-wip::before,
+.milestone-label.milestone-wip::after {
+    background: #C16F1F;
+}
+.milestone-label.milestone-future::before,
+.milestone-label.milestone-future::after {
+    background: #D15992;
+}
 .milestone-label::after {
     left: -14px;
     bottom: -7px;
@@ -149,6 +163,12 @@ body {
     background: none;
     border: 1px solid #31a64f;
     box-sizing: border-box;
+}
+.milestone-label.milestone-wip::after {
+    border-color: #C16F1F;
+}
+.milestone-label.milestone-future::after {
+    border-color: #D15992;
 }
 .milestone p {
     padding-left: 10px;
