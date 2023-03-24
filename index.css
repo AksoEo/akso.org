@@ -1,0 +1,207 @@
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, Helvetica Neue, Roboto, Ubuntu, sans-serif;
+    color-scheme: light dark;
+    color: var(--fg);
+    background-image: radial-gradient(circle at 50% 35vh, var(--bg0), var(--bg1));
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    margin: 0;
+    perspective: 300px;
+
+    --bg0: #fff;
+    --bg1: #ccc;
+    --fg: #000;
+    --fg-tagline: rgba(0, 0, 0, 0.6);
+    --fg-footer: rgba(0, 0, 0, 0.7);
+    --nav-border: #ccc;
+}
+
+@media (prefers-color-scheme: dark) {
+    html {
+        background: black;
+    }
+    body {
+        --bg0: #333;
+        --bg1: #000;
+        --fg: #ccc;
+        --fg-tagline: rgba(255, 255, 255, 0.6);
+        --fg-footer: rgba(255, 255, 255, 0.7);
+        --nav-border: #444;
+    }
+}
+
+.a11y-only {
+    height: 0;
+    margin: 0;
+    padding: 0;
+    opacity: 0;
+}
+
+#title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 70vh;
+    max-height: 400px;
+}
+
+#logo {
+    width: 128px;
+    height: 128px;
+    animation: logo-in 1.5s cubic-bezier(0.2, 0.3, 0, 1);
+}
+
+@keyframes logo-in {
+    0% {
+        transform: translateY(30px) rotateX(45deg) rotateZ(45deg) scale(2);
+    }
+}
+
+.logo-corner {
+    animation: logo-corner-in 0.5s cubic-bezier(0.2, 0.3, 0, 1) backwards;
+    transform-origin: 50% 50%;
+}
+.logo-corner:nth-child(2) { animation-delay: 0.1s; }
+.logo-corner:nth-child(3) { animation-delay: 0.2s; }
+.logo-corner:nth-child(4) { animation-delay: 0.3s; }
+
+@keyframes logo-corner-in {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    #logo .logo-corner {
+        paint-order: stroke fill;
+    }
+    #logo {
+        will-change: transform;
+        -webkit-filter: drop-shadow(0 0 40px white);
+        filter: drop-shadow(0 0 40px white);
+    }
+    #logo-label {
+        -webkit-filter: invert(1);
+        filter: invert(1);
+    }
+}
+
+#logo-label, #tagline {
+    margin-top: 20px;
+    animation: logo-label-in 1s cubic-bezier(0.1, 0.3, 0, 1) 0.7s backwards;
+}
+
+@keyframes logo-label-in {
+    0% {
+        transform: translateY(20px) rotateX(-10deg);
+        opacity: 0;
+    }
+}
+
+#tagline {
+    font-weight: 500;
+    text-align: center;
+    margin-left: 2em;
+    margin-right: 2em;
+    color: var(--fg-tagline);
+    animation-delay: 0.8s;
+}
+
+#top-nav {
+    border-bottom: 1px solid var(--nav-border);
+    padding: 0.5em 1em;
+    margin-bottom: 1em;
+    text-align: center;
+    font-weight: bold;
+    animation: other-in 1s cubic-bezier(0.1, 0.3, 0, 1) 0.9s backwards;
+}
+#top-nav .inner-nav {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 2em;
+}
+
+/* --- body --- */
+
+@keyframes other-in {
+    0% {
+        transform: translateY(20px) rotateX(-2deg);
+        opacity: 0;
+    }
+}
+@keyframes other-in-nr {
+    0% {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+}
+
+section, #footer-inner {
+    margin: 0 auto;
+    padding: 0 2em;
+    max-width: 76ex;
+}
+
+section {
+    animation: other-in 1s cubic-bezier(0.1, 0.3, 0, 1) 1s backwards;
+}
+
+/* --- footer --- */
+
+#footer {
+    padding: 2em 0;
+    height: 8em;
+    box-sizing: border-box;
+    background: linear-gradient(to bottom,
+        rgba(0, 0, 0, 0.00) 0%,
+        rgba(0, 0, 0, 0.00) 13%,
+        rgba(0, 0, 0, 0.01) 25%,
+        rgba(0, 0, 0, 0.02) 38%,
+        rgba(0, 0, 0, 0.05) 50%,
+        rgba(0, 0, 0, 0.09) 63%,
+        rgba(0, 0, 0, 0.13) 75%,
+        rgba(0, 0, 0, 0.19) 88%,
+        rgba(0, 0, 0, 0.25) 100%
+    );
+}
+#footer-inner {
+    text-align: center;
+    color: var(--fg-footer);
+    font-size: small;
+}
+#footer-inner .footer-logo-link {
+    color: inherit;
+    text-decoration: none;
+}
+#uea-icon, #tejo-icon {
+    width: 2.5em;
+    height: 2.5em;
+}
+#uea-icon {
+    margin-right: 0.5em;
+}
+#footer-copyright {
+    margin-top: 1em;
+}
+
+#content-wrapper {
+    min-height: calc(100vh - 8em);
+}
+
+.centered {
+    text-align: center;
+}
+
+a {
+    color: #31a64f;
+    text-decoration: none;
+}
+@media (hover: hover) {
+    a:hover {
+        text-decoration: underline;
+    }
+}
